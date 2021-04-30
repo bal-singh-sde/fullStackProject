@@ -1,10 +1,68 @@
 <html>
     <head>
-
+        <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.0/examples/product/"
+    />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="../styles.css" rel="stylesheet" />
     </head>
     <body>
-
+        <nav class="site-header sticky-top py-1">
+      <div
+        class="container d-flex flex-column flex-md-row justify-content-between"
+      >
+        <a class="py-2" href="#">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="d-block mx-auto"
+          >
+            <circle cx="12" cy="12" r="10"></circle>
+            <line x1="14.31" y1="8" x2="20.05" y2="17.94"></line>
+            <line x1="9.69" y1="8" x2="21.17" y2="8"></line>
+            <line x1="7.38" y1="12" x2="13.12" y2="2.06"></line>
+            <line x1="9.69" y1="16" x2="3.95" y2="6.06"></line>
+            <line x1="14.31" y1="16" x2="2.83" y2="16"></line>
+            <line x1="16.62" y1="12" x2="10.88" y2="21.94"></line>
+          </svg>
+        </a>
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="../index.html"
+          >Home</a>
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="../exercise-recommendations/exercise-recommendations.html"
+          >Workout Planner</a
+        >
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="../calculator/calculator.html"
+          >Calculator</a
+        >
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="./workoutlogs.html"
+          >Workout logs</a
+        >
+        <a class="py-2 d-none d-md-inline-block" href="#">Sign In</a>
+      </div>
+    </nav>
+    <div
+      class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light"
+    >
+      <div class="col-md-5 p-lg-5 mx-auto my-5">
         <h3 id=>Your Workouts</h3>
             <p id="no_workout">
                 <textarea name="Your Workouts" id="Your_Workouts" cols="23" rows="2" placeholder="No Workouts found"></textarea>
@@ -20,8 +78,12 @@
                 <button type="submit">Add Workout</button>
             </form>
         </div>
-
-        <script src="workoutLogger.js"></script>
-
+        </div>
+      <div class="product-device box-shadow d-none d-md-block"></div>
+      <div
+        class="product-device product-device-2 box-shadow d-none d-md-block"
+      ></div>
+    </div>
+        <script src="./workoutLogger.js"></script>
     <body>
 </html>
