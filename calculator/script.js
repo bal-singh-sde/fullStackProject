@@ -9,11 +9,18 @@ function handleSubmit(e) {
   e.preventDefault();
 
   const age = e.target.age.value;
-  const height = e.target.height.value;
-  const weight = e.target.weight.value;
+  const height = Math.round(
+    lengthConverterFeet(e.target.height.value) +
+      lengthConverterInches(e.target.heightInches.value)
+  );
+  const weight = weightConverter(e.target.weight.value);
+  console.log(height);
   const activity = e.target.activity.value;
   const gender = e.target.gender.value;
   const calculate = e.target.calculate.value;
+  const neck = lengthConverterInches(e.target.neck.value);
+  const waist = lengthConverterInches(e.target.waist.value);
+  const hip = lengthConverterInches(e.target.hip.value);
 
   resetFormValues(e.target);
 
@@ -49,7 +56,8 @@ function handleSubmit(e) {
       cardCont.appendChild(newCardCont);
 
       const newCard = document.createElement("div");
-      newCard.setAttribute("class", "card-body text-center");
+      newCard.setAttribute("class", "card text-center");
+      newCard.setAttribute("style", "width: 18rem;");
       newCardCont.appendChild(newCard);
 
       const cardTitle = document.createElement("h5");
@@ -62,7 +70,7 @@ function handleSubmit(e) {
       desc.innerText = `Healthy bmi range = ${data.data.results.healthy_bmi_range}`;
       newCard.appendChild(desc);
     }
-  } else {
+  } else if (calculate === "calculator") {
     var options = {
       method: "GET",
       url: "https://workout-planner-team2.herokuapp.com/calculator",
@@ -95,6 +103,7 @@ function handleSubmit(e) {
 
       const newCard = document.createElement("div");
       newCard.setAttribute("class", "card-body text-center");
+      newCard.setAttribute("style", "width: 18rem;");
       newCardCont.appendChild(newCard);
 
       const cardTitle = document.createElement("h5");
@@ -108,6 +117,26 @@ function handleSubmit(e) {
       desc.innerText = `calories you'll burn`;
       newCard.appendChild(desc);
     }
+  } else {
+    var options = {
+      method: "GET",
+      url: "https://workout-planner-team2.herokuapp.com/bodyFat",
+      params: {
+        age: age,
+        gender: gender,
+        height: height,
+        weight: weight,
+        activity: activity,
+        neck: neck,
+        waist: waist,
+        hip: hip,
+      },
+    };
+
+    axios
+      .request(options)
+      .then((data) => console.log(data.value))
+      .catch((err) => console.log(err));
   }
 }
 
@@ -124,3 +153,47 @@ function removeDestination(event) {
   var card = cardBody.parentElement;
   card.remove();
 }
+
+// lbs to kg
+function weightConverter(valNum) {
+  return valNum / 2.2046;
+}
+
+//feet to cm
+function lengthConverterFeet(valNum) {
+  return valNum / 0.032808;
+}
+
+// inches to cm
+function lengthConverterInches(valNum) {
+  return valNum / 0.3937;
+}
+
+//createCard
+
+// function createCard(title, data) {
+//   const cardCont = document.getElementById("cardCont");
+
+//   const card = document.createElement("div");
+//   card.setAttribute("class", "card");
+//   card.style.width = "15rem";
+//   card.style.height = "fit-content";
+//   card.style.margin = "20px;";
+//   cardCont.appendChild(card);
+
+//   const cardBody = document.createElement("div");
+//   cardBody.setAttribute("class", "card-body");
+//   card.appendChild(cardBody);
+
+//   const cardTitle = document.createElement("h5");
+//   cardTitle.setAttribute("class", "card-title");
+//   cardTitle.innerText = title;
+//   cardBody.appendChild(cardTitle);
+
+//   const cardSubtitle = document.createElement("h6");
+//   cardSubtitle.setAttribute("class", "card-subtitle mb-2 text-muted");
+//   cardSubtitle.innerText = data;
+//   cardBody.appendChild(cardSubtitle);
+
+//   return card;
+// }

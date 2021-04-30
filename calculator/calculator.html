@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
 
-    <title>Product example for Bootstrap</title>
+    <title>Fitness Calculator</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/product/">
 
@@ -27,11 +27,22 @@
           class="py-2 d-none d-md-inline-block"
           href="../index.html"
           >Home</a>
-        <a class="py-2 d-none d-md-inline-block" href="../index.html">Home</a>
-        
-        <a class="py-2 d-none d-md-inline-block" href="../views/index.ejs"
-          >Workoutlogs</a
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="../exercise-recommendations/exercise-recommendations.html"
+          >Workout Planner</a
         >
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="./calculator.html"
+          >Calculator</a
+        >
+        <a
+          class="py-2 d-none d-md-inline-block"
+          href="../workoutLogs/workoutlogs.html"
+          >Workout logs</a
+        >
+        <a class="py-2 d-none d-md-inline-block" href="#">Sign In</a>
       </div>
     </nav>
 
@@ -54,17 +65,18 @@
           <tr>
             <td class="T">Age</td>
             <td class="I" id="AT"><input type="number" min="0" id="age" placeholder=""
-                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;"><div style="display: none;" id="ATT">Please enter valid number</div></td>
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" required><div style="display: none;" id="ATT">Please enter Age</div></td>
           </tr>
           <tr>
             <td class="T">Weight</td>
             <td class="I"><input type="number" min="0" id="weight"
-                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="Kg"><div style="display: none;" id="WTT">Please enter valid number</div></td>
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="Lbs" required><div style="display: none;" id="WTT">Please enter weight</div></td>
           </tr>
           <tr>
             <td class="T">Height</td>
             <td class="I"><input type="number" min="0" id="height"
-                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="Cm"><div style="display: none;" id="HTT">Please enter valid number</div></td>
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="Feet" required><input type="number" min="0" id="heightInches"
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="inches"><div style="display: none;" id="HTT">Please enter Feets</div></td>
           </tr>
         
         
@@ -81,11 +93,23 @@
             </select>
           </td>
         </tr>
+
+        <tr>
+            <td class="T">Advanced Feature</td>
+            <td class="I"><input type="number" min="0" id="neck"
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="neck" required>
+                <input type="number" min="0" id="waist"
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="waist">
+                <input type="number" min="0" id="hip"
+                style="border-width: 2px; border-color: rgb(229, 229, 229); border-radius: 5px;" placeholder="hip"><div style="display: none;" id="waist">Please enter Feets</div></td>
+          </tr>
+
         <tr>
             <td class="T">Calculations</td>
             <td class="I">
               <input type="radio" name="calculate" value="calorie" id="calorie" checked="checked"> Calories &nbsp &nbsp
               <input type="radio" name="calculate" value="bmi" id="bmi"> BMI
+              <input type="radio" name="calculate" value="bmi" id="Advanced"> Advanced
             </td>
           </tr>
       </table>
@@ -97,7 +121,7 @@
     </div>
     
     </div>
-    <div id="cardCont">
+    <div class="card position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light" id="cardCont">
 
     </div>
 
