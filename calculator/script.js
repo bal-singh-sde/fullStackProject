@@ -4,7 +4,6 @@ document.getElementById("userForm").addEventListener("submit", handleSubmit);
 
 function handleSubmit(e) {
   e.preventDefault();
-
   if (document.getElementById("desc")) {
     removeDestination(document.getElementById("desc"));
   }
