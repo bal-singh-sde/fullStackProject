@@ -79,9 +79,7 @@ app.use(bodyParser.json());
 
       //PUT
       app.put("/workouts", (req, res) => {
-        let date = moment(req.body.date, "YYYY-MM-DD").format(
-          "MMMM DD, YYYY"
-        );
+        let date = moment(req.body.date, "YYYY-MM-DD").format("MM/DD/YYYY");
         workOutsCollection
           .findOneAndUpdate(
             { _id: ObjectId(req.body._id)},

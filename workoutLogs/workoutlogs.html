@@ -1,27 +1,237 @@
 <html>
     <head>
-
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    </head>
-    <body>
-
-        <h3 id=>Your Workouts</h3>
-            <p id="no_workout">
-                <textarea name="Your Workouts" id="Your_Workouts" cols="23" rows="2" placeholder="No Workouts found"></textarea>
-            </p>
-        <div id="input_area">
-            <span class="badge badge-primary">Body Part</span>
-<span class="badge badge-secondary">Workout</span>
-<span class="badge badge-success">Interval</span>
-            <form id="user_input" action="/workouts" method="POST" >
-                <input type="text" placeholder="Body part you are working on" name="bodyPart">
-                <input type="text" placeholder="Enter the workout performed" name="workout">
-                <input type="text" placeholder="Enter the repitition or duration of the exercise" name="interval">
-                <button type="submit">Add Workout</button>
-            </form>
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"> -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <style src=workoutlogger.css></style>
+    <body><!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Bootstrap theme</a>
         </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li role="separator" class="divider"></li>
+                <li class="dropdown-header">Nav header</li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
 
-        <script src="workoutLogger.js"></script>
+    <div class="container theme-showcase" role="main">
 
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron">
+        <h1>Workout Logs</h1>
+        <p>We are here to help you keep a log of your workouts. Please use the tools below to log your workouts.
+          <p>Happy Working out and Happy Logging!!</p>
+       </p>
+      </div>
+
+      <h2 class="sub-header">Your Workouts</h2>
+       <!-- Trigger the modal with a button -->
+        <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Add Workouts</button>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal fade" role="dialog">
+          <div class="modal-dialog">
+        
+            <!-- Modal content-->
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add your Workouts</h4>
+              </div>
+              <div class="modal-body">
+                <div id="input_area">
+                    <p>Please use the form below to add your workout:</p> 
+                
+                    <form id="user_input_add" action="/workouts" method="POST" >
+                        <div class="form-group">
+                            <label for="date"><strong>Date</strong></label>
+                            <input type="date" class="form-control" id="date" placeholder="Enter the Date for the activity" name="date" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="bodypartSelect">Select the <strong>Body Part</strong> you worked on</label>
+                              <select class="form-control" id="bodypartSelect" name="bodyPart" required>
+                                  <option value="" selected disabled>Please select</option>
+                                  <option>Abs</option>
+                                  <option>Arms</option>
+                                  <option>Back</option>
+                                  <option>Calves</option>
+                                  <option>Chest</option>
+                                  <option>Legs</option>
+                                  <option>Shoulders</option>
+                              </select>
+                        </div>
+                        <div class="form-group">
+                          <label for="exerciseType"><strong>Exercise</strong></label>
+                          <input type="text" class="form-control" id="exerciseType" placeholder="Enter the type of exercise performed" name="workout" required>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="Reps_Interval"><strong>Reps/Duration</strong></label>
+                          <textarea class="form-control" id="Reps_Interval" rows="3" placeholder="Enter the repetitions or duration of the exercise" name="Reps_Interval" required></textarea>
+                        </div>
+                        <button type="submit">Add Workout</button>
+                    </form>          
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+        
+          </div>
+        </div>
+          
+        <!-- GET -->
+                <!-- Loop through workouts -->
+            <% if (workouts.length==0) { %>
+                    <div class="alert alert-warning" role="alert">
+                      <strong>No Workouts found!</strong> Please use the <strong>"Add Workouts"</strong> button to add your workout.
+                    </div>
+      
+      
+            <%} else { %>
+                <div class="table-responsive">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>BodyPart</th>
+                            <th>Workout</th>
+                            <th>Reps/Interval</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+
+
+                                  <!-- <ol class="users_workouts"> -->
+                        <% for(var i = 0; i < workouts.length; i++) {%>
+                          <tr>
+                            <td><%= workouts[i].date %></td>
+                            <td><%= workouts[i].bodyPart %></td>
+                            <td><%= workouts[i].workout %></td>
+                            <td><%= workouts[i].Reps_Interval %></td>
+                            <td><button type="submit" class="delete btn btn-danger" value=<%= workouts[i]._id %>>Delete Workout</button></td> 
+                            <td><button type="button" class="update btn btn-success" data-toggle="modal" data-target="#myModal_update" value=<%= workouts[i]._id %>>Update Workout</button>
+                            
+                            <!-- Modal -->
+                                              <div id="myModal_update" class="modal fade" role="dialog">
+                                                <div class="modal-dialog">
+                                                
+                                                  <!-- Modal content-->
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                      <h4 class="modal-title">Update your Workouts</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                      <div id="input_area_update">
+                                                          <p>Please use the form below to update this workout:</p> 
+                                                          <form id="user_input" action="/workouts" method="POST" >
+                                                            <div class="form-group">
+                                                                <label for="date"><strong>Date</strong></label>
+                                                                <input type="date" class="form-control" id="date" placeholder="Enter the Date for the activity" name="date" required>
+                                                              </div>
+                                                          <div class="form-group">
+                                                                <label for="bodypartSelect"><strong>Body Part</strong></label>
+                                                                <input type="text" class="form-control" id="bodypartSelect" placeholder="Enter the Body Part you worked on" name="bodyPart" required>
+                                                              </div>
+                                                              <div class="form-group">
+                                                                <label for="workout"><strong>Exercise</strong></label>
+                                                                <input type="text" class="form-control" id="workout" placeholder="Enter the type of exercise performed" name="workout" valeu=<%= workouts[i].workout %> required>
+                                                              </div>
+                                                            
+                                                              <div class="form-group">
+                                                                <label for="Reps_Interval"><strong>Reps/Duration</strong></label>
+                                                                <textarea type="text" class="form-control" id="Reps_Interval" rows="3" placeholder="Enter the repetitions or duration of the exercise" name="Reps_Interval" required></textarea>
+                                                              </div>
+                                                              <button type="submit" class="update" value=<%= workouts[i]._id%>>Update Workout</button>
+                                                          </form>          
+                                                      </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-default"  data-dismiss="modal">Close</button>
+                                                    </div>
+                                                  </div>
+                                                  </td>
+                          </tr>
+                          <% } %>
+                           </tbody>
+                      </table>
+                          <% } %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<div class="container">
+  <h2>Workout Quotes</h2>  
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+      <div class="item active">
+        <img src="https://r9t5u7b9.rocketcdn.me/wp-content/uploads/2017/04/workout-quotes-body.jpg" alt="Quote 1" style="width:100%;">
+      </div>
+
+      <div class="item">
+        <img src="https://r9t5u7b9.rocketcdn.me/wp-content/uploads/2017/04/workout-quotes-push.jpg" alt="Quote 2" style="width:100%;">
+      </div>
+    
+      <div class="item">
+        <img src="https://r9t5u7b9.rocketcdn.me/wp-content/uploads/2017/04/workoout-quote-selfdiscipline.png" alt="Quote 3" style="width:100%;">
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+    </div> <!-- /container -->
+
+
+
+        <script src="/main.js"></script>
     <body>
 </html>
