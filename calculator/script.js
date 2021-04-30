@@ -168,32 +168,3 @@ function lengthConverterFeet(valNum) {
 function lengthConverterInches(valNum) {
   return valNum / 0.3937;
 }
-
-//createCard
-
-// function createCard(title, data) {
-//   const cardCont = document.getElementById("cardCont");
-
-//   const card = document.createElement("div");
-//   card.setAttribute("class", "card");
-//   card.style.width = "15rem";
-//   card.style.height = "fit-content";
-//   card.style.margin = "20px;";
-//   cardCont.appendChild(card);
-
-//   const cardBody = document.createElement("div");
-//   cardBody.setAttribute("class", "card-body");
-//   card.appendChild(cardBody);
-
-//   const cardTitle = document.createElement("h5");
-//   cardTitle.setAttribute("class", "card-title");
-//   cardTitle.innerText = title;
-//   cardBody.appendChild(cardTitle);
-
-//   const cardSubtitle = document.createElement("h6");
-//   cardSubtitle.setAttribute("class", "card-subtitle mb-2 text-muted");
-//   cardSubtitle.innerText = data;
-//   cardBody.appendChild(cardSubtitle);
-
-//   return card;
-// }
